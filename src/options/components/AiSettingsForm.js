@@ -3,7 +3,18 @@ import {FormattedMessage} from 'react-intl';
 import renderIf from 'render-if';
 
 /**
+ * AiSettingsForm renders a form for configuring AI provider settings.
  *
+ * @component
+ * @param {Object} props - The component props.
+ * @param {Object} props.values - Current form values for AI settings.
+ * @param {Function} props.setValues - Function to update form values.
+ * @param {Function} props.onSubmit - Callback when the form is submitted.
+ * @param {Function} props.onChange - Callback when any form field changes.
+ * @param {boolean} props.showSuccessMessage - Whether to show a success message after saving.
+ * @param {Array<{value: string, name: string}>} props.providers - List of available AI providers.
+ *
+ * @returns {JSX.Element} The rendered form component.
  */
 function AiSettingsForm({values, setValues, onSubmit, onChange, showSuccessMessage, providers}) {
         const handleChange = (event) => {
