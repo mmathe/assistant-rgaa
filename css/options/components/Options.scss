@@ -1,5 +1,42 @@
+
+.Options-field {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: vr(1);
+}
+
 .Options-field label {
-	margin-right: 3px;
+        margin-bottom: vr(0.5);
+}
+
+.Options-field input,
+.Options-field select,
+.Options-field textarea {
+        width: 100%;
+}
+
+.Options-field textarea {
+        min-height: vr(3);
+        resize: vertical;
+}
+
+.Options-section {
+        margin-top: vr(2);
+}
+
+.Options-sectionTitle {
+        margin-bottom: vr(0.5);
+        font-family: $font-title;
+}
+
+.Options-help {
+        margin-top: vr(0.5);
+        color: $color-gray;
+        font-size: 0.875em;
+}
+
+.Options-aiSettings {
+        margin-bottom: vr(2);
 }
 
 .Options-submit {

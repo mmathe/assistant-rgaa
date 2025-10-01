@@ -13,28 +13,33 @@ import TestHelpersContainer from './TestHelpersContainer';
  *
  */
 function Test({
-	id, title, instructions, importResult, applicable, applied,
-	areInstructionsOpen, toggleInstructions,
-	done, onApply, onDone, intl
+        id, title, instructions, importResult, applicable, applied,
+        areInstructionsOpen, toggleInstructions,
+        done, comment, onApply, onDone, onCommentChange, intl
 }) {
-	const handleApplyChange = (event) => {
-		onApply(event.target.checked);
-		if (event.target.checked) {
-			toggleInstructions(true);
-		}
-	};
+        const handleApplyChange = (event) => {
+                onApply(event.target.checked);
+                if (event.target.checked) {
+                        toggleInstructions(true);
+                }
+        };
 
-	const handleDoneChange = (event) =>
-		onDone(event.target.checked);
+        const handleDoneChange = (event) =>
+                onDone(event.target.checked);
 
-	const applyTranslateKey = applied ? 'uncheck' : 'check';
-	const className = classNames({
-		Test: true,
-		'is-applied': applied
-	});
+        const handleCommentChange = (event) =>
+                onCommentChange(event.target.value);
 
-	return (
-		<article className={className}>
+        const applyTranslateKey = applied ? 'uncheck' : 'check';
+        const className = classNames({
+                Test: true,
+                'is-applied': applied
+        });
+        const commentInputId = `test-${id}-comment-input`;
+        const commentHintId = `test-${id}-comment-hint`;
+
+        return (
+                <article className={className}>
 			<header className="Test-header">
 				<div className="Test-title">
 					<h4 className="Test-id">
@@ -112,11 +117,30 @@ function Test({
 				/>
 			))}
 
-			{renderIf(applied)(() => (
-				<TestHelpersContainer id={id} />
-			))}
-		</article>
-	);
+                        {renderIf(applied)(() => (
+                                <TestHelpersContainer id={id} />
+                        ))}
+
+                        <div className="Test-comment">
+                                <label className="Test-commentLabel" htmlFor={commentInputId}>
+                                        {intl.formatMessage({id: 'Test.comment.label'})}
+                                </label>
+                                <textarea
+                                        id={commentInputId}
+                                        className="Test-commentTextarea"
+                                        value={comment}
+                                        maxLength={500}
+                                        placeholder={intl.formatMessage({id: 'Test.comment.placeholder'})}
+                                        aria-describedby={commentHintId}
+                                        onChange={handleCommentChange}
+                                        rows={4}
+                                />
+                                <p className="Test-commentHint" id={commentHintId}>
+                                        {intl.formatMessage({id: 'Test.comment.help'}, {max: 500})}
+                                </p>
+                        </div>
+                </article>
+        );
 }
 
 Test.propTypes = {
@@ -124,23 +148,27 @@ Test.propTypes = {
 	title: PropTypes.string.isRequired,
 	instructions: PropTypes.string,
 	importResult: PropTypes.string,
-	applicable: PropTypes.bool,
-	applied: PropTypes.bool,
-	done: PropTypes.bool,
-	onApply: PropTypes.func,
-	onDone: PropTypes.func,
-	intl: intlShape.isRequired,
-	areInstructionsOpen: PropTypes.bool,
-	toggleInstructions: PropTypes.func
+        applicable: PropTypes.bool,
+        applied: PropTypes.bool,
+        done: PropTypes.bool,
+        comment: PropTypes.string,
+        onApply: PropTypes.func,
+        onDone: PropTypes.func,
+        onCommentChange: PropTypes.func,
+        intl: intlShape.isRequired,
+        areInstructionsOpen: PropTypes.bool,
+        toggleInstructions: PropTypes.func
 };
 
 Test.defaultProps = {
-	applicable: false,
-	applied: false,
-	done: false,
-	importResult: '',
-	onApply: noop,
-	onDone: noop
+        applicable: false,
+        applied: false,
+        done: false,
+        comment: '',
+        importResult: '',
+        onApply: noop,
+        onDone: noop,
+        onCommentChange: noop
 };
 
 export default injectIntl(Test);
