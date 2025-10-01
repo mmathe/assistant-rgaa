@@ -1,5 +1,7 @@
 const path = require('path');
 const fullPath = path.resolve.bind(null, __dirname);
+const {executablePath} = require('puppeteer');
+process.env.CHROME_BIN = executablePath();
 
 
 
@@ -18,10 +20,22 @@ module.exports = function(config) {
 		reporters: [
 			'mocha'
 		],
-		browsers: [
-			'Chrome',
-			'Firefox'
-		],
+                browsers: [
+                        'ChromeHeadlessNoSandbox'
+                ],
+                customLaunchers: {
+                        ChromeHeadlessNoSandbox: {
+                                base: 'ChromeHeadless',
+                                flags: [
+                                        '--no-sandbox',
+                                        '--disable-setuid-sandbox',
+                                        '--disable-dev-shm-usage',
+                                        '--single-process',
+                                        '--remote-debugging-address=0.0.0.0',
+                                        '--remote-debugging-port=9222'
+                                ]
+                        }
+                },
 		preprocessors: {
 			'src/**/*.js': ['webpack']
 		},

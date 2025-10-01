@@ -3,6 +3,9 @@ import {has, get, unset, forEach, method} from 'lodash';
 import {sharedReducers} from '../common/reducers';
 import createAppInstance from './createAppInstance';
 import createOptionsInstance from './createOptionsInstance';
+import {getOption} from '../common/api/options';
+import {setConfig as setAiConfig} from '../common/actions/ai';
+import {initialState as initialAiState} from '../common/reducers/ai';
 
 
 
@@ -10,9 +13,19 @@ import createOptionsInstance from './createOptionsInstance';
  *
  */
 export default function createInstancePool() {
-	const sharedStore = createStore(combineReducers(sharedReducers));
-	const instances = {};
-	let optionsInstance;
+        const sharedStore = createStore(combineReducers(sharedReducers));
+        getOption('aiConfig')
+                .then((config) => {
+                        if (config && typeof config === 'object' && Object.keys(config).length) {
+                                sharedStore.dispatch(setAiConfig({
+                                        ...initialAiState,
+                                        ...config
+                                }));
+                        }
+                })
+                .catch(() => {});
+        const instances = {};
+        let optionsInstance;
 
 	//
 	const create = (id) => {
