@@ -5,7 +5,7 @@ import {getConfig} from '../../common/selectors/ai';
 import {initialState as initialAiState} from '../../common/reducers/ai';
 import AiSettingsForm from './AiSettingsForm';
 
-const providerOptions = [
+export const providerOptions = [
         {value: 'openai', name: 'OpenAI'},
         {value: 'azure-openai', name: 'Azure OpenAI'},
         {value: 'gemini', name: 'Google Gemini'},
@@ -14,7 +14,7 @@ const providerOptions = [
         {value: 'custom', name: 'Personnalisé'}
 ];
 
-const normalizeConfig = (config = {}) => ({
+export const normalizeConfig = (config = {}) => ({
         ...initialAiState,
         ...config,
         provider: config.provider || initialAiState.provider,

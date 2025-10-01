@@ -6,7 +6,7 @@ import {SAVE_CONFIG, setConfig} from '../actions/ai';
 /**
  *
  */
-function* saveConfigWorker({payload: {config}}) {
+export function* saveConfigWorker({payload: {config}}) {
         yield call(setOption, 'aiConfig', config);
         yield put(setConfig(config));
 }
