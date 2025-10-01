@@ -8,6 +8,7 @@ import tests from './tests';
 import instructions from './instructions';
 import checklist from './checklist';
 import imports from './imports';
+import ai from './ai';
 
 
 
@@ -15,9 +16,10 @@ import imports from './imports';
  *	Reducers shared by each instance in the background.
  */
 export const sharedReducers = {
-	reference,
-	instructions,
-	helpers
+        reference,
+        instructions,
+        helpers,
+        ai
 };
 
 /**

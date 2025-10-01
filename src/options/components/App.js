@@ -1,5 +1,6 @@
 import React from 'react';
 import ReferenceFormContainer from './ReferenceFormContainer';
+import AiSettingsFormContainer from './AiSettingsFormContainer';
 
 
 
@@ -7,9 +8,10 @@ import ReferenceFormContainer from './ReferenceFormContainer';
  *
  */
 export default function App() {
-	return (
-		<div>
-			<ReferenceFormContainer />
-		</div>
-	);
+        return (
+                <div>
+                        <ReferenceFormContainer />
+                        <AiSettingsFormContainer />
+                </div>
+        );
 }
