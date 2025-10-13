@@ -2,6 +2,7 @@ import React, {Component, PropTypes} from 'react';
 import {map, noop, debounce} from 'lodash';
 import ThemesListContainer from './ThemesListContainer';
 import ThemeContainer from './ThemeContainer';
+import AiAnalysisPanelContainer from './AiAnalysisPanelContainer';
 
 
 
@@ -41,8 +42,9 @@ export default class ReferencePage extends Component {
 
 	render() {
 		return (
-			<div className="ReferencePage">
-				<ThemesListContainer />
+                        <div className="ReferencePage">
+                                <AiAnalysisPanelContainer />
+                                <ThemesListContainer />
 				<div
 					ref={this.bindThemes}
 					className="ReferencePage-themes"
