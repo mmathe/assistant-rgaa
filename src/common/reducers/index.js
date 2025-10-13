@@ -9,6 +9,7 @@ import instructions from './instructions';
 import checklist from './checklist';
 import imports from './imports';
 import ai from './ai';
+import aiAnalysis from './aiAnalysis';
 
 
 
@@ -26,12 +27,13 @@ export const sharedReducers = {
  *	Reducers that are instance-specific in the background.
  */
 export const appReducers = {
-	panel,
-	themes,
-	criteria,
-	tests,
-	checklist,
-	imports
+        panel,
+        themes,
+        criteria,
+        tests,
+        checklist,
+        imports,
+        aiAnalysis
 };
 
 export const reducers = {
