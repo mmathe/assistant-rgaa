@@ -33,7 +33,7 @@ export const appReducers = {
         tests,
         checklist,
         imports,
-        aiAnalysis
+        aiAnalysis,
 };
 
 export const reducers = {
