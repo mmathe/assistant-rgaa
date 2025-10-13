@@ -1,0 +1,251 @@
+.AiAnalysisPanel {
+        margin: 1rem;
+        padding: 1rem;
+        background: #fff;
+        border: 1px solid #d9d9d9;
+        border-radius: 4px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.AiAnalysisPanel-toolbar {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.5rem;
+}
+
+.AiAnalysisPanel-button {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 1rem;
+        background-color: #5b46f6;
+        color: #fff;
+        font-weight: 600;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+}
+
+.AiAnalysisPanel-button:hover,
+.AiAnalysisPanel-button:focus {
+        background-color: #4334b8;
+        outline: none;
+}
+
+.AiAnalysisPanel-button.is-disabled {
+        cursor: not-allowed;
+        background-color: #b5b5b5;
+}
+
+.AiAnalysisPanel-buttonIcon {
+        width: 1rem;
+        height: 1rem;
+}
+
+.AiAnalysisPanel-spinner {
+        width: 1rem;
+        height: 1rem;
+        border-radius: 50%;
+        border: 2px solid rgba(255, 255, 255, 0.6);
+        border-top-color: #fff;
+        animation: AiAnalysisPanel-spin 0.8s linear infinite;
+}
+
+@keyframes AiAnalysisPanel-spin {
+        0% {
+                transform: rotate(0deg);
+        }
+
+        100% {
+                transform: rotate(360deg);
+        }
+}
+
+.AiAnalysisPanel-actions {
+        display: flex;
+        gap: 0.5rem;
+}
+
+.AiAnalysisPanel-secondary {
+        border: 1px solid #5b46f6;
+        background: transparent;
+        color: #5b46f6;
+        padding: 0.4rem 0.8rem;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.AiAnalysisPanel-secondary:hover,
+.AiAnalysisPanel-secondary:focus {
+        background-color: #5b46f6;
+        color: #fff;
+        outline: none;
+}
+
+.AiAnalysisPanel-secondary:disabled {
+        cursor: not-allowed;
+        border-color: #ccc;
+        color: #ccc;
+        background: transparent;
+}
+
+.AiAnalysisPanel-message {
+        margin-top: 0.5rem;
+        padding: 0.5rem;
+        border-radius: 4px;
+}
+
+.AiAnalysisPanel-message--success {
+        background-color: #e3f9e5;
+        color: #1a7f37;
+}
+
+.AiAnalysisPanel-message--error {
+        background-color: #fdecea;
+        color: #b91c1c;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0.5rem;
+}
+
+.AiAnalysisPanel-message--loading {
+        background-color: #e8f0fe;
+        color: #1a73e8;
+}
+
+.AiAnalysisPanel-messageDismiss {
+        background: transparent;
+        border: none;
+        color: inherit;
+        cursor: pointer;
+        text-decoration: underline;
+        padding: 0;
+}
+
+.AiAnalysisPanel-copyFeedback {
+        margin-top: 0.5rem;
+        font-size: 0.85rem;
+}
+
+.AiAnalysisPanel-copyFeedback.is-success {
+        color: #1a7f37;
+}
+
+.AiAnalysisPanel-copyFeedback.is-error {
+        color: #b91c1c;
+}
+
+.AiAnalysisPanel-tableWrapper {
+        margin-top: 1rem;
+        overflow-x: auto;
+}
+
+.AiAnalysisPanel-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.95rem;
+}
+
+.AiAnalysisPanel-table th,
+.AiAnalysisPanel-table td {
+        border: 1px solid #e5e5e5;
+        padding: 0.5rem;
+        text-align: left;
+        vertical-align: top;
+}
+
+.AiAnalysisPanel-result {
+        font-weight: 600;
+        padding: 0.2rem 0.4rem;
+        border-radius: 4px;
+        display: inline-block;
+}
+
+.AiAnalysisPanel-result.is-valid {
+        background-color: #d1f7d6;
+        color: #166534;
+}
+
+.AiAnalysisPanel-result.is-invalid {
+        background-color: #fde2e1;
+        color: #991b1b;
+}
+
+.AiAnalysisPanel-result.is-na {
+        background-color: #f1f1f1;
+        color: #4b5563;
+}
+
+.AiAnalysisPanel-contextButton {
+        background: none;
+        border: none;
+        color: #5b46f6;
+        cursor: pointer;
+        text-decoration: underline;
+        padding: 0;
+}
+
+.AiAnalysisPanel-empty {
+        margin-top: 1rem;
+        color: #555;
+}
+
+.AiAnalysisPanel-drawer {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.4);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+        padding: 1rem;
+}
+
+.AiAnalysisPanel-drawerContent {
+        background: #fff;
+        max-width: 600px;
+        width: 100%;
+        max-height: 80vh;
+        overflow: auto;
+        border-radius: 6px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        padding: 1rem;
+}
+
+.AiAnalysisPanel-drawerHeader {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+}
+
+.AiAnalysisPanel-drawerClose {
+        background: none;
+        border: none;
+        color: #5b46f6;
+        cursor: pointer;
+        text-decoration: underline;
+}
+
+.AiAnalysisPanel-contextList {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        gap: 0.5rem;
+}
+
+.AiAnalysisPanel-contextList code {
+        display: block;
+        background: #f6f6f6;
+        padding: 0.5rem;
+        border-radius: 4px;
+        word-break: break-all;
+}
