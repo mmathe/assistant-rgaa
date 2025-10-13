@@ -13,12 +13,14 @@ config.plugins.push(
 		'process.env.NODE_ENV': JSON.stringify('production')
 	}),
 	new webpack.optimize.DedupePlugin(),
-	new webpack.optimize.OccurrenceOrderPlugin(),
-	new webpack.optimize.UglifyJsPlugin({
+	new webpack.optimize.OccurrenceOrderPlugin()
+	// UglifyJsPlugin désactivé car incompatible avec ES6
+	// Si vous avez besoin de minification, utilisez babel-minify-webpack-plugin
+	/* new webpack.optimize.UglifyJsPlugin({
 		compress: {
 			warnings: false
 		}
-	})
+	}) */
 );
 
 

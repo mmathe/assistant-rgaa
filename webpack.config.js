@@ -101,7 +101,8 @@ module.exports = {
 		new webpack.optimize.CommonsChunkPlugin({
 			name: 'common',
 			filename: 'common.js',
-			minChunks: 2
+			minChunks: 2,
+			chunks: ['panel', 'container', 'helpers', 'options', 'devtools'] // Exclut 'background'
 		})
 	]
 };
