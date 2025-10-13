@@ -6,11 +6,11 @@
   "scripts": {
     "start": "npm run icons && webpack --watch --config webpack.config.dev.js",
     "serve": "webpack-dev-server --config webpack.config.dev.js",
-    "icons": "touch ./dist/icons.svg && spritesh --input ./icons --output ./dist/icons.svg",
+    "icons": "if not exist dist mkdir dist && spritesh --input ./icons --output ./dist/icons.svg && copy dist\\icons.svg icons.svg",
     "build": "npm run clean && npm run icons && webpack --config webpack.config.production.js",
-    "build-extension": "npm run build && web-ext build --artifacts-dir artifacts/ --ignore-files ./bin ./css ./doc ./fixtures ./src ./test ./karma.conf.js ./package.json ./webpack.config.*",
-    "sign-extension": "npm run build && web-ext sign --artifacts-dir artifacts/ --ignore-files ./bin ./css ./doc ./fixtures ./src ./test ./karma.conf.js ./package.json ./webpack.config.*",
-    "clean": "rm -f ./dist/*",
+    "build-extension": "npm run build && web-ext build --artifacts-dir artifacts/ --ignore-files ./bin ./css ./doc ./fixtures ./src ./test ./node_modules ./karma.conf.js ./package.json ./package-lock.json ./.npmrc ./webpack.config.* ./.git ./.gitignore ./.babelrc ./.editorconfig ./.eslintrc ./.stylelintrc",
+    "sign-extension": "npm run build && web-ext sign --artifacts-dir artifacts/ --ignore-files ./bin ./css ./doc ./fixtures ./src ./test ./node_modules ./karma.conf.js ./package.json ./package-lock.json ./.npmrc ./webpack.config.* ./.git ./.gitignore ./.babelrc ./.editorconfig ./.eslintrc ./.stylelintrc",
+    "clean": "if exist dist rmdir /s /q dist && mkdir dist",
     "test": "karma start"
   },
   "devDependencies": {
@@ -56,7 +56,7 @@
     "karma-mocha-reporter": "^2.0.3",
     "karma-webpack": "^1.7.0",
     "mocha": "^2.4.5",
-    "node-sass": "^3.7.0",
+    "node-sass": "^9.0.0",
     "papaparse": "^4.1.4",
     "postcss-loader": "^0.9.1",
     "puppeteer": "^23.11.1",
@@ -65,6 +65,7 @@
     "redux-devtools-dock-monitor": "^1.1.1",
     "redux-devtools-log-monitor": "^1.0.11",
     "request": "^2.74.0",
+    "sass": "^1.32.0",
     "sass-loader": "^3.2.0",
     "spritesh": "^1.2.0",
     "style-loader": "^0.13.1",

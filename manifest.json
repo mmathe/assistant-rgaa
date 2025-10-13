@@ -1,5 +1,5 @@
 {
-	"manifest_version": 2,
+	"manifest_version": 3,
 	"name": "Assistant RGAA",
 	"description": "Assistant RGAA",
 	"version": "1.0.4",
@@ -7,33 +7,36 @@
 		"48": "img/icon-48.png",
 		"96": "img/icon-96.png"
 	},
-	"applications": {
-		"gecko": {
-			"id": "assistant-rgaa@modernisation.gouv.fr",
-			"strict_min_version": "52.0"
-		}
-	},
-	"browser_action": {
+	"action": {
 		"default_icon": "img/icon-96.png",
 		"default_title": "Assistant RGAA"
 	},
 	"permissions": [
 		"tabs",
 		"storage",
+		"scripting"
+	],
+	"host_permissions": [
 		"<all_urls>"
 	],
 	"background": {
-		"scripts": [
-			"dist/common.js",
-			"dist/background.js"
-		]
+		"service_worker": "dist/background.js"
 	},
 	"options_ui": {
 		"page": "pages/options.html"
 	},
 	"web_accessible_resources": [
-		"pages/panel.html",
-		"pages/devtools.html",
-		"data/references/3-2016.json"
+		{
+			"resources": [
+				"pages/panel.html",
+				"pages/devtools.html",
+				"data/references/3-2016.json",
+				"dist/*.js",
+				"dist/*.css",
+				"dist/*.map",
+				"icons.svg"
+			],
+			"matches": ["<all_urls>"]
+		}
 	]
 }

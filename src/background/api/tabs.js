@@ -24,8 +24,38 @@ export const CONTENT_STYLES = [
  */
 export const sendMessageToTab = api('tabs.sendMessage');
 export const createTab = api('tabs.create');
-export const executeScript = api('tabs.executeScript');
-export const insertCSS = api('tabs.insertCSS');
+
+/**
+ * Wrapper pour executeScript compatible Manifest V2 et V3
+ */
+export const executeScript = (tabId, details) => {
+	// Manifest V3 utilise chrome.scripting.executeScript
+	if (chrome.scripting && chrome.scripting.executeScript) {
+		return chrome.scripting.executeScript({
+			target: { tabId },
+			files: details.file ? [details.file] : undefined,
+			func: details.code ? new Function(details.code) : undefined
+		});
+	}
+	// Manifest V2 utilise chrome.tabs.executeScript
+	return api('tabs.executeScript')(tabId, details);
+};
+
+/**
+ * Wrapper pour insertCSS compatible Manifest V2 et V3
+ */
+export const insertCSS = (tabId, details) => {
+	// Manifest V3 utilise chrome.scripting.insertCSS
+	if (chrome.scripting && chrome.scripting.insertCSS) {
+		return chrome.scripting.insertCSS({
+			target: { tabId },
+			files: details.file ? [details.file] : undefined,
+			css: details.code
+		});
+	}
+	// Manifest V2 utilise chrome.tabs.insertCSS
+	return api('tabs.insertCSS')(tabId, details);
+};
 
 /**
  *

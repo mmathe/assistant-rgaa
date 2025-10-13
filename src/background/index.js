@@ -184,7 +184,9 @@ const handleKnownInstanceMessage = (message, tabId, instance) => {
  *	Asks the content script to toggle the extension's container
  *	when one clicks the extension icon in the browser UI.
  */
-chrome.browserAction.onClicked.addListener(() =>
+// Support pour Manifest V2 (browserAction) et V3 (action)
+const actionAPI = chrome.action || chrome.browserAction;
+actionAPI.onClicked.addListener(() =>
 	fetchCurrentTab().then((tab) => {
 		if (instances.hasInstance(tab.id)) {
 			togglePanel(tab);

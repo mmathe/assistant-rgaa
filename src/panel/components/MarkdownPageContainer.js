@@ -2,6 +2,7 @@ import {lifecycle} from 'recompose';
 import fastmatter from 'fastmatter';
 import marked from 'marked';
 import {replaceLocalUrls} from '../../common/api/markdown';
+import {getURL} from '../../common/api/extension';
 import MarkdownPage from './MarkdownPage';
 
 
@@ -12,7 +13,7 @@ import MarkdownPage from './MarkdownPage';
 const enhance = lifecycle({
 	componentDidMount() {
 		const basePath = `data/pages/${this.props.name}`;
-		const url = chrome.extension.getURL(`${basePath}/index.md`);
+		const url = getURL(`${basePath}/index.md`);
 
 		fetch(url)
 			.then((response) =>
