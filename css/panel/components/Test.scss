@@ -78,5 +78,35 @@
 }
 
 .Test-action--done.Test-action--checked .Icon {
-	transform: rotate(60deg);
+        transform: rotate(60deg);
+}
+
+.Test-comment {
+        padding: vr(0.5) $app-gutter;
+        border-top: 1px solid lighten($color-black, 80%);
+        background: $color-white;
+}
+
+.Test-commentLabel {
+        display: block;
+        font-weight: bold;
+        margin-bottom: vr(0.25);
+}
+
+.Test-commentTextarea {
+        width: 100%;
+        min-height: vr(2.5);
+        resize: vertical;
+        padding: vr(0.25);
+        border: 1px solid lighten($color-black, 70%);
+        border-radius: 2px;
+        background: $color-white;
+        font: inherit;
+        box-sizing: border-box;
+}
+
+.Test-commentHint {
+        margin-top: vr(0.25);
+        @include typi($typi-small);
+        color: $color-gray-dark;
 }

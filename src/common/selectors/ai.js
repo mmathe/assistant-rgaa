@@ -8,7 +8,7 @@ export const getConfig = (state) => state.ai;
 /**
  * Returns the AI provider from the configuration object in the Redux state.
  * @param {Object} state - The Redux state.
- * @returns {string} The AI provider name.
+
  */
 export const getProvider = (state) => getConfig(state).provider;
 
